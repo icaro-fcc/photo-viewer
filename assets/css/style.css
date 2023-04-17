@@ -1,0 +1,124 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+    /* border: 1px solid cyan;  */
+}
+
+body {
+    background-color: #333;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    /* border: 1px solid cyan; */
+    height: 100vh;
+}
+
+#title {
+    font-size: 3em;
+    height: 80px;
+    padding: 10px;
+    border: 1px solid cyan;
+}
+
+.photoDisplay {
+    height: calc(100vh - 180px);
+    width: 500px;
+    border: 1px solid cyan;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.galleryArea {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+}
+
+.gallery {
+    /* display: flex; */
+    /* flex-wrap: wrap;
+    justify-content: center; */
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    /* border: 1px solid cyan; */
+    overflow: hidden;
+}
+
+.arrows {
+    width: 80px;
+    height: 100%;
+    cursor: pointer;
+    font-size: 4em;
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    transition: all ease-out 0.3s;
+    /* filter: invert(0.4); */
+    background-size: 25%;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 1px solid rgba(0,0,0,0);
+}
+
+.arrowRight {
+    background-image: url('./assets/img/icons/arrow.png');
+}
+
+.arrowLeft {
+    background-image: url('./assets/img/icons/arrow.png');
+    transform: scaleX(-1);
+}
+
+.arrows:hover {
+    background-color: #444;
+    border: 1px solid #555;
+}
+
+.arrowLeftEnd, .arrowRightEnd {
+    background-size: 45%;
+    display: none;
+}
+
+.arrowLeftEnd {
+    background-image: url('./images/icons/arrow-end.png');
+    transform: scaleX(-1);
+}
+
+.arrowRightEnd {
+    background-image: url('./images/icons/arrow-end.png');
+}
+
+
+
+.slide {
+    width: auto;  /*10 photos + 45px of spaces between*/
+    background-color: #444;
+    /* display: flex; */
+    /* justify-content: stretch; */
+    /* border: 1px solid rgb(211, 13, 46); */
+    height: 80px;
+    padding: 10px 0px;
+    white-space: nowrap;
+
+    margin-left: 0px;   /*Then -80 at every click to the right */
+    transition: all ease-out 0.8s;
+}
+
+.photoWrapper {
+    width: 80px;
+    height: 60px;
+    text-align: center;
+    /* border: 1px solid cyan; */
+    display: inline-block;
+    margin-right: -5px;
+}
+
+.photo {
+    height: 100%;
+    max-width: 100%;
+    cursor: pointer;
+    transition: all ease-out 0.3s;
+}
