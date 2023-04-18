@@ -15,16 +15,15 @@ body {
 }
 
 #title {
-    font-size: 3em;
+    font-size: 2em;
     height: 80px;
     padding: 10px;
-    border: 1px solid cyan;
 }
 
 .photoDisplay {
     height: calc(100vh - 180px);
-    width: 500px;
-    border: 1px solid cyan;
+    width: 80vw;
+    /* border: 1px solid cyan; */
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
@@ -83,12 +82,12 @@ body {
 }
 
 .arrowLeftEnd {
-    background-image: url('./images/icons/arrow-end.png');
+    background-image: url('./assets/img/icons/arrow.png');
     transform: scaleX(-1);
 }
 
 .arrowRightEnd {
-    background-image: url('./images/icons/arrow-end.png');
+    background-image: url('./assets/img/icons/arrow.png');
 }
 
 

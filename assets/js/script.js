@@ -1,4 +1,18 @@
-$(function() {
+$(document).ready(function() {
+    $(photosList).each(function(index, element) {
+        console.log('index: ', element);
+        console.log('element: ', index);
+        let newPhotoElement = $('<img>');
+        newPhotoElement.attr('src', $(this)[0].source);
+        newPhotoElement.addClass('photo');
+        console.log(newPhotoElement);
+        let newPhotoWrapperElement = $('<div>');
+        newPhotoWrapperElement.addClass('photoWrapper');
+        newPhotoWrapperElement.append(newPhotoElement);
+        $('.slide').append(newPhotoWrapperElement);
+    });
+
+
     //Applying the hover function for all the photo elements
     $('.photoWrapper').hover(function() {
         console.log('Hovering...');
@@ -7,9 +21,23 @@ $(function() {
         $(this).find('.photo').css('transform', 'scale(1)');
     });
 
+    let currentPhotoElement;
+
     $('.photo').bind('click', function() {
         $('.photoDisplay').css('background-image', `url('${$(this).attr('src')}'`);
+        currentPhotoElement = $(this);
+        console.log(currentPhotoElement);
     });
+
+    // $('.arrowRightEnd').bind('click', function() {
+    //     if ($(currentPhotoElement).next()) {
+    //         console.log('Foi pra foto da direita');
+    //         console.log(currentPhotoElement);
+    //         console.log(currentPhotoElement.next().attr('src'));
+    //         $('.photoDisplay').css('background-image', `url('${$(currentPhotoElement).next().attr('src')}'`);
+    //     }
+            
+    // });
 
     $('.arrows').hover(function() {
         $('.arrowLeftEnd, .arrowRightEnd').css('display', 'block');
