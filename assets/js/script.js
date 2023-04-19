@@ -40,9 +40,9 @@ $(document).ready(function() {
     // });
 
     $('.arrows').hover(function() {
-        $('.arrowLeftEnd, .arrowRightEnd').css('display', 'block');
+        $('.arrowLeftEnd, .arrowRightEnd').css('opacity', 1);
     }, function() {
-        $('.arrowLeftEnd, .arrowRightEnd').css('display', 'none');
+        $('.arrowLeftEnd, .arrowRightEnd').css('opacity', '1');
     });
 
 
@@ -67,7 +67,6 @@ $(document).ready(function() {
         //80px is the length of every photo element
     
         $('.arrowRight').bind('click', function() {
-            
             if (slideMargin != slideLengthLimit) {
                 console.log(slideMargin);
                     slideMargin -= 80;

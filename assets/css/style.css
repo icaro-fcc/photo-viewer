@@ -23,6 +23,8 @@ body {
 .photoDisplay {
     height: calc(100vh - 180px);
     width: 80vw;
+    height: 100vh;
+    z-index: -1;
     /* border: 1px solid cyan; */
     background-size: contain;
     background-position: center;
@@ -34,13 +36,14 @@ body {
     justify-content: center;
     align-items: center;
     height: 80px;
+    width: 70vw;
 }
 
 .gallery {
     /* display: flex; */
     /* flex-wrap: wrap;
     justify-content: center; */
-    width: 500px;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
     /* border: 1px solid cyan; */
@@ -63,11 +66,11 @@ body {
 }
 
 .arrowRight {
-    background-image: url('./assets/img/icons/arrow.png');
+    background-image: url('../img/icons/arrow.png')
 }
 
 .arrowLeft {
-    background-image: url('./assets/img/icons/arrow.png');
+    background-image: url('../img/icons/arrow.png');
     transform: scaleX(-1);
 }
 
@@ -78,17 +81,17 @@ body {
 
 .arrowLeftEnd, .arrowRightEnd {
     background-size: 45%;
-    display: none;
+    opacity: 0;
 }
 
-.arrowLeftEnd {
-    background-image: url('./assets/img/icons/arrow.png');
+/* .arrowLeftEnd {
+    background-image: url('./images/icons/arrow-end.png');
     transform: scaleX(-1);
 }
 
 .arrowRightEnd {
-    background-image: url('./assets/img/icons/arrow.png');
-}
+    background-image: url('./images/icons/arrow-end.png');
+} */
 
 
 
@@ -112,7 +115,7 @@ body {
     text-align: center;
     /* border: 1px solid cyan; */
     display: inline-block;
-    margin-right: -5px;
+    margin: 0px 10px
 }
 
 .photo {
