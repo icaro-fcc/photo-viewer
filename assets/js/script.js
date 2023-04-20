@@ -1,16 +1,33 @@
 $(document).ready(function() {
-    $(photosList).each(function(index, element) {
-        console.log('index: ', element);
-        console.log('element: ', index);
+
+
+    for (let i = 1; i <= 15; i++) {
+        let randomNum = Math.floor(Math.random() * 15) + 1;
+        console.log(randomNum); // outputs a random integer between 1 and 1607
         let newPhotoElement = $('<img>');
-        newPhotoElement.attr('src', $(this)[0].source);
+        newPhotoElement.attr('src', photosList[randomNum].source);
         newPhotoElement.addClass('photo');
         console.log(newPhotoElement);
         let newPhotoWrapperElement = $('<div>');
         newPhotoWrapperElement.addClass('photoWrapper');
         newPhotoWrapperElement.append(newPhotoElement);
         $('.slide').append(newPhotoWrapperElement);
-    });
+
+
+    }
+
+    // $(photosList).each(function(index, element) {
+    //     console.log('index: ', element);
+    //     console.log('element: ', index);
+    //     let newPhotoElement = $('<img>');
+    //     newPhotoElement.attr('src', $(this)[0].source);
+    //     newPhotoElement.addClass('photo');
+    //     console.log(newPhotoElement);
+    //     let newPhotoWrapperElement = $('<div>');
+    //     newPhotoWrapperElement.addClass('photoWrapper');
+    //     newPhotoWrapperElement.append(newPhotoElement);
+    //     $('.slide').append(newPhotoWrapperElement);
+    // });
 
 
     //Applying the hover function for all the photo elements
@@ -53,6 +70,7 @@ $(document).ready(function() {
     console.log('slideWidth: ', slideWidth, 'e gallery.length: ', galleryWidth);
 
     if (slideWidth < galleryWidth) {
+        console.log(slideWidth, galleryWidth);
         $('.slide').css('display', 'flex').css('justify-content', 'center');
     } else {
         let slideLengthLimit = -($('.photoWrapper').length - 6) * 80;
@@ -67,6 +85,7 @@ $(document).ready(function() {
         //80px is the length of every photo element
     
         $('.arrowRight').bind('click', function() {
+            
             if (slideMargin != slideLengthLimit) {
                 console.log(slideMargin);
                     slideMargin -= 80;
