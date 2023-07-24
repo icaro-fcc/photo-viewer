@@ -1,8 +1,10 @@
+import {photosList} from '../js/photos.js';
+
 $(document).ready(function() {
 
 
-    for (let i = 1; i <= 15; i++) {
-        let randomNum = Math.floor(Math.random() * 15) + 1;
+    for (let i = 1; i <= 20; i++) {
+        let randomNum = Math.floor(Math.random() * 20) + 1;
         console.log(randomNum); // outputs a random integer between 1 and 1607
         let newPhotoElement = $('<img>');
         newPhotoElement.attr('src', photosList[randomNum].source);
@@ -16,18 +18,6 @@ $(document).ready(function() {
 
     }
 
-    // $(photosList).each(function(index, element) {
-    //     console.log('index: ', element);
-    //     console.log('element: ', index);
-    //     let newPhotoElement = $('<img>');
-    //     newPhotoElement.attr('src', $(this)[0].source);
-    //     newPhotoElement.addClass('photo');
-    //     console.log(newPhotoElement);
-    //     let newPhotoWrapperElement = $('<div>');
-    //     newPhotoWrapperElement.addClass('photoWrapper');
-    //     newPhotoWrapperElement.append(newPhotoElement);
-    //     $('.slide').append(newPhotoWrapperElement);
-    // });
 
 
     //Applying the hover function for all the photo elements
@@ -70,7 +60,6 @@ $(document).ready(function() {
     console.log('slideWidth: ', slideWidth, 'e gallery.length: ', galleryWidth);
 
     if (slideWidth < galleryWidth) {
-        console.log(slideWidth, galleryWidth);
         $('.slide').css('display', 'flex').css('justify-content', 'center');
     } else {
         let slideLengthLimit = -($('.photoWrapper').length - 6) * 80;

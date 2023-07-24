@@ -66,7 +66,7 @@ body {
 }
 
 .arrowRight {
-    background-image: url('../img/icons/arrow.png')
+    background-image: url('../img/icons/arrow.png');
 }
 
 .arrowLeft {
@@ -82,16 +82,17 @@ body {
 .arrowLeftEnd, .arrowRightEnd {
     background-size: 45%;
     opacity: 0;
+    display: none;
 }
 
-/* .arrowLeftEnd {
+.arrowLeftEnd {
     background-image: url('./images/icons/arrow-end.png');
     transform: scaleX(-1);
 }
 
 .arrowRightEnd {
     background-image: url('./images/icons/arrow-end.png');
-} */
+}
 
 
 
