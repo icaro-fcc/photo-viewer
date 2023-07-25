@@ -15,9 +15,9 @@ body {
 }
 
 #title {
-    font-size: 2em;
-    height: 80px;
-    padding: 10px;
+    font-size: 1.6em;
+    height: 40px;
+    padding: 3px;
 }
 
 .photoDisplay {
@@ -43,11 +43,13 @@ body {
     /* display: flex; */
     /* flex-wrap: wrap;
     justify-content: center; */
+    height: 60px;
     width: 100%;
     margin-left: auto;
     margin-right: auto;
     /* border: 1px solid cyan; */
     overflow: hidden;
+    
 }
 
 .arrows {
@@ -102,9 +104,9 @@ body {
     /* display: flex; */
     /* justify-content: stretch; */
     /* border: 1px solid rgb(211, 13, 46); */
-    height: 80px;
-    padding: 10px 0px;
+    height: 100%;
     white-space: nowrap;
+    padding: 5px;
 
     margin-left: 0px;   /*Then -80 at every click to the right */
     transition: all ease-out 0.8s;
@@ -112,16 +114,20 @@ body {
 
 .photoWrapper {
     width: 80px;
-    height: 60px;
+    height: 50px;
     text-align: center;
     /* border: 1px solid cyan; */
     display: inline-block;
-    margin: 0px 10px
+    margin: 0px 5px;
+    transition: all ease-out 0.3s;
 }
 
 .photo {
     height: 100%;
-    max-width: 100%;
+    /* max-width: 100%; */
+    width: auto;
     cursor: pointer;
-    transition: all ease-out 0.3s;
+    
+    /* box-sizing: content-box; */
+    background-position: bottom;
 }

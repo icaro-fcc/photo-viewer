@@ -15,18 +15,30 @@ $(document).ready(function() {
         newPhotoWrapperElement.append(newPhotoElement);
         $('.slide').append(newPhotoWrapperElement);
 
-
+        //Setting the 1st random photo as the 1st one showing on the page
+        if (i == 1)
+        $('.photoDisplay').css('background-image', `url('${photosList[randomNum].source}'`);
     }
 
+    
 
+    console.log(photosList[0]);
 
     //Applying the hover function for all the photo elements
-    $('.photoWrapper').hover(function() {
+    // $('.photoWrapper').hover(function() {
+    //     console.log('Hovering...');
+    //     $(this).find('.photo').css('transform', 'scale(1.3)');
+    // }, function(){
+    //     $(this).find('.photo').css('transform', 'scale(1)');
+    // });
+
+    $('.photo').hover(function() {
         console.log('Hovering...');
-        $(this).find('.photo').css('transform', 'scale(1.3)');
+        $(this).parent().css('transform', 'scale(1.3)');
     }, function(){
-        $(this).find('.photo').css('transform', 'scale(1)');
+        $(this).parent().css('transform', 'scale(1)');
     });
+
 
     let currentPhotoElement;
 
@@ -34,7 +46,20 @@ $(document).ready(function() {
         $('.photoDisplay').css('background-image', `url('${$(this).attr('src')}'`);
         currentPhotoElement = $(this);
         console.log(currentPhotoElement);
+        
+
+        $('.photo').each(function() {
+            if ($(this) != currentPhotoElement) {
+                console.log('Setting the border of the element: ', $(this));
+                $(this).css('border', 'none');
+            }
+                
+        });
+
+        $(this).css('border', '5px solid #CCC');
     });
+
+
 
     // $('.arrowRightEnd').bind('click', function() {
     //     if ($(currentPhotoElement).next()) {
@@ -55,14 +80,14 @@ $(document).ready(function() {
 
 
     let slideMargin = 0;
-    let slideWidth = $('.photoWrapper').length * 80;
+    let slideWidth = ($('.photoWrapper').length * 90);
     let galleryWidth = parseInt($('.gallery').css('width'), 10);
     console.log('slideWidth: ', slideWidth, 'e gallery.length: ', galleryWidth);
 
     if (slideWidth < galleryWidth) {
         $('.slide').css('display', 'flex').css('justify-content', 'center');
     } else {
-        let slideLengthLimit = -($('.photoWrapper').length - 6) * 80;
+        let slideLengthLimit = -($('.photoWrapper').length - 16) * 90;
 
         console.log('slideLengthLimit: ', slideLengthLimit);
 
@@ -71,13 +96,13 @@ $(document).ready(function() {
     
         
     
-        //80px is the length of every photo element
+        //60px is the length of every photo element
     
         $('.arrowRight').bind('click', function() {
             
-            if (slideMargin != slideLengthLimit) {
+            if (slideMargin >= slideLengthLimit) {
                 console.log(slideMargin);
-                    slideMargin -= 80;
+                    slideMargin -= 90;
                 $('.slide').css('margin-left', slideMargin);
                 console.log(slideMargin);
             }
@@ -87,8 +112,8 @@ $(document).ready(function() {
         $('.arrowLeft').bind('click', function() {
             
             console.log(slideMargin);
-            if (slideMargin != 0) {
-                slideMargin += 80;
+            if (slideMargin < 0) {
+                slideMargin += 90;
                 $('.slide').css('margin-left', slideMargin);
                 console.log(slideMargin);
             }
