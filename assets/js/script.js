@@ -18,19 +18,17 @@ $(document).ready(function() {
             let randomNum = Math.floor(Math.random() * totalPhotos);
 
             let newPhotoElement = $('<img>');
-            console.log('Random number: ', randomNum);
             newPhotoElement.attr('src', photosList[randomNum].source);
             newPhotoElement.addClass('photo');
-
             let newPhotoWrapperElement = $('<div>');
             newPhotoWrapperElement.addClass('photoWrapper');
             newPhotoWrapperElement.append(newPhotoElement);
-
             $('.slide').append(newPhotoWrapperElement);
 
             //Setting the 1st random photo as the 1st one showing on the page
             if (i == 1)
-                $('.photoDisplay').css('background-image', `url('${photosList[randomNum].source}'`);
+                // $('.photoDisplay').css('background-image', `url('${photosList[randomNum].source}'`);
+                $('.photoShown').attr('src', photosList[randomNum].source);
         };
 
         eventsSetUp(); //After creating the photos elements, creating the events for each
@@ -38,7 +36,8 @@ $(document).ready(function() {
 
     
 
-    /*This function is responsible for adding the events for photos and arrow buttons,
+    /*This function is responsible for adding the events for the
+    photos on the slider, the zoom on the photo displayed, arrow buttons (navigation),
     as well as displaying the photo that's clicked*/
     function eventsSetUp() {
         $('.photo').hover(function() {
@@ -51,7 +50,8 @@ $(document).ready(function() {
         let currentPhotoElement;
     
         $('.photo').bind('click', function() {
-            $('.photoDisplay').css('background-image', `url('${$(this).attr('src')}'`);
+            // $('.photoDisplay').css('background-image', `url('${$(this).attr('src')}'`);
+            $('.photoShown').attr('src', $(this).attr('src'));
             currentPhotoElement = $(this);
             
     
@@ -61,6 +61,45 @@ $(document).ready(function() {
             });
     
             currentPhotoElement.css('border', '5px solid #CCC');
+        });
+
+
+        //Creating the zoom option:
+        const img = $('.photoShown');
+
+        //Zoom option for when hovering the photo
+        img.bind('mousemove', function(e){
+            const x = e.clientX - e.target.offsetLeft;
+            const y = e.clientY - e.target.offsetTop;
+
+            img.css('transform-origin', `${x}px ${y}px`);
+            img.css('transform', 'scale(2.5)');
+        });
+
+        //Zoom option for when touching/swiping the photo
+        img.bind('touchmove', function(e){
+            var touch = e.originalEvent.touches[0];
+            var x = touch.pageX;
+            var y = touch.pageY;
+
+            console.log(x, y);
+
+            img.css('transform-origin', `${x}px ${y}px`);
+            img.css('transform', 'scale(2.5)');
+        });
+
+
+        //And reseting the original photo size for when stopping hovering/touching
+        img.bind('mouseleave', function(){
+
+            img.css('transform-origin', 'center center');
+            img.css('transform', 'scale(1)');
+        });
+
+        img.bind('touchend', function(){
+
+            img.css('transform-origin', 'center center');
+            img.css('transform', 'scale(1)');
         });
 
     };
@@ -75,20 +114,16 @@ $(document).ready(function() {
         let photoWrapperMargin = (parseInt($('.photoWrapper').eq(0).css('margin-left'), 10)) * 2;
         let photoTotalWidth = photoWrapperWidth + photoWrapperMargin;
 
+
         let slideMargin = 0;
-        let slideWidth = ($('.photoWrapper').length * photoTotalWidth);
-        //the total width of all photos
-
-        let galleryWidth = parseInt($('.gallery').css('width'), 10);
-        //the width of the gallery (slide) which is based on the viewport
-
+        let slideWidth = ($('.photoWrapper').length * photoTotalWidth); //the total width of all photos
+        let galleryWidth = parseInt($('.gallery').css('width'), 10); //the width of the gallery (slide) which is based on the viewport
         console.log('slideWidth: ', slideWidth, 'e galleryWidth: ', galleryWidth);
 
-        
-        let maxRightClicks = Math.ceil(photosToShow - (galleryWidth / photoTotalWidth));
         //Number of clicks that will be possible to go to the right
+        let maxRightClicks = Math.ceil(photosToShow - (galleryWidth / photoTotalWidth));
         /*
-        This math was thought like this: since the galleryWidth (which is based on viewport)
+        This math was thought like: since the galleryWidth (which is based on viewport)
         divided by photoTotalWidth (each photo) is the number of photos that are firstly shown on the screen,
         then if considering the total of photos, and subtracting this number of photos shown,
         we know how many clicks (which takes a single photo, or photoTotalWidth) will take until
