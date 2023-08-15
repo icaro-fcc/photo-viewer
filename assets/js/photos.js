@@ -1,5 +1,5 @@
-export let photosList = [];
-export let totalPhotos = 20;  // <-- Define here how many photos exist in the source folder!
+let photosList = [];
+let totalPhotos = 20;  // <-- Inform here how many photos exist in the source folder!
 
 for (let i = 0; i <= totalPhotos; i++) {
     photosList.push({

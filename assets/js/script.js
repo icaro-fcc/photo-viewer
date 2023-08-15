@@ -1,18 +1,17 @@
-import {photosList, totalPhotos} from './photos.js';
+// import {photosList, totalPhotos} from './photos.js';
 
 $(document).ready(function() {
 
 
     let photosToShow = 20;    // <-- Define here how many photos will be shown in the slider!
 
-    /*Setting 20 photos to show and there are 20 photos in the folder,
-    so there will be repeated ones. This is just for adding many to the slider*/
 
-    /*This function selects the photos randomly to be used in the slider,
+    /*This function selects the photos randomly to be used in the slider, and already
     wrapping and adding their respective wrapper classes*/
     function photosSetUp() {       
 
         photosToShow = (photosToShow > totalPhotos) ? totalPhotos : photosToShow;
+        //Just making sure the number of photos selected will be max the total photos in the folder
 
         for (let i = 1; i <= photosToShow; i++) {
             let randomNum = Math.floor(Math.random() * totalPhotos);
@@ -25,13 +24,12 @@ $(document).ready(function() {
             newPhotoWrapperElement.append(newPhotoElement);
             $('.slide').append(newPhotoWrapperElement);
 
-            //Setting the 1st random photo as the 1st one showing on the page
+            //Setting the 1st random photo as the 1st one displayed on the page
             if (i == 1)
-                // $('.photoDisplay').css('background-image', `url('${photosList[randomNum].source}'`);
                 $('.photoShown').attr('src', photosList[randomNum].source);
         };
 
-        eventsSetUp(); //After creating the photos elements, creating the events for each
+        eventsSetUp(); //After creating the photos elements, create the events for each
     };
 
     
@@ -50,7 +48,7 @@ $(document).ready(function() {
         let currentPhotoElement;
     
         $('.photo').bind('click', function() {
-            // $('.photoDisplay').css('background-image', `url('${$(this).attr('src')}'`);
+
             $('.photoShown').attr('src', $(this).attr('src'));
             currentPhotoElement = $(this);
             
@@ -147,7 +145,7 @@ $(document).ready(function() {
 
 
     /*This function handles the click events for the arrows (navigation), as well as
-    the limits for showing the beginning and end of the slide*/
+    the limits for showing the beginning and the end of the slide*/
     function handleSliderArrowClick(photoTotalWidth, maxRightClicks, slideMargin) {
         let slideMarginLimit = - (photoTotalWidth * maxRightClicks);
 
